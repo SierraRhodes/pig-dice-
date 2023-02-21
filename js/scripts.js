@@ -1,11 +1,7 @@
 let player = new Player();
 let computer = new Computer();
 
-//  Business Logic
-function rollDice() {
- const diceNumber = Math.floor(Math.random() * 6) + 1;
- return diceNumber;
-}
+//Business Logic 
 
 //Player
 function Player() {
@@ -24,12 +20,18 @@ function Computer() {
   this.turn = 0;
 }
 
+function rollDice() {
+ const diceNumber = Math.floor(Math.random() * 6) + 1;
+ return diceNumber;
+}
+
 function updateScore(diceNumber, player) {
   if (diceNumber === 1) {
     player.score = 0;
     switchPlayer();
   } else {
     player.score += diceNumber;
+    player.currentScore += diceNumber;
   }
 }
 
@@ -42,13 +44,14 @@ function roll() {
   // determine which player's turn it is
   if (player.turn === 1) {
     updateScore(diceNumber, player);
+     // updates the UI to display the updated score
     document.getElementById("player-score").innerText = player.score;
   } else {
     updateScore(diceNumber, computer);
     document.getElementById("computer-score").innerText = computer.score;
   }
-  // update the UI to display the current score
 }
+
 function switchPlayer() {
   // switch the turn to the other player
   if (player.turn === 1) {
@@ -62,9 +65,32 @@ function switchPlayer() {
   }
 }
 
-//Hold
+// Hold
+
+function hold() {
+  event.preventDefault();
+  if (player.turn === 1) {
+   player.currentScore;
+   document.getElementById("player-current-score").innerText = player.currentScore;
+   switchPlayer();
+   player.score = 0;
+  } else {
+   computer.currentScore;
+   document.getElementById("computer-current-score").innerText = computer.currentScore;
+   switchPlayer();
+   computer.score = 0;
+  }
+  
+ }
+
+
+
+
+
 
 window.addEventListener("load", function(event) {
+  const holdButton = document.getElementById("hold-button");
+  holdButton.addEventListener("click", hold);
   const rollButton = document.getElementById("roll-button");
   rollButton.addEventListener("click", roll);
  });
