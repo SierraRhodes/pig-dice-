@@ -4,8 +4,14 @@ function rollDice() {
  const diceNumber = Math.floor(Math.random() * 6) + 1;
  return diceNumber;
 }
-console.log(rollDice());
 
+function rollDice() {
+  const diceNumber = Math.floor(Math.random() * 6) + 1;
+  if (diceNumber === 1) {
+  return 0;
+}
+return diceNumber;
+}
 
 
 
