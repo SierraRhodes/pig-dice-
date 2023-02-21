@@ -35,37 +35,37 @@ function updateScore(diceNumber, player) {
 
 
 //UI Logic 
+
 function roll() {
   event.preventDefault();
   const diceNumber = rollDice();
   // determine which player's turn it is
   if (player.turn === 1) {
-    updateScore(diceNumber);
+    updateScore(diceNumber, player);
+    document.getElementById("player-score").innerText = player.score;
   } else {
     updateScore(diceNumber, computer);
+    document.getElementById("computer-score").innerText = computer.score;
   }
-  // update the UI to display the current score for the active player
+  // update the UI to display the current score
 }
 function switchPlayer() {
   // switch the turn to the other player
   if (player.turn === 1) {
     player.turn = 0;
     computer.turn = 1;
+    document.getElementById("current-turn").innerText = "Computer's turn!";
   } else {
     player.turn = 1;
     computer.turn = 0;
+    document.getElementById("current-turn").innerText = "Player's turn";
   }
 }
 
-
+//Hold
 
 window.addEventListener("load", function(event) {
   const rollButton = document.getElementById("roll-button");
   rollButton.addEventListener("click", roll);
-  if (player.turn === 1) {
-    document.getElementById("player-score").innerText = player.score;
-  } else {
-    document.getElementById("computer-score").innerText = computer.score;
-  }
  });
      
