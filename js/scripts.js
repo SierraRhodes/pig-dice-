@@ -1,5 +1,6 @@
 let player = new Player();
 let computer = new Computer();
+const diceEl = document.querySelector('.dice');
 
 //Business Logic 
 
@@ -25,6 +26,11 @@ function rollDice() {
  return diceNumber;
 }
 
+// function displayDice(){
+//   rollDice(diceNumber);
+//   diceEl.src = `img/die${diceNumber}.png`;
+// }
+
 function updateScore(diceNumber, player) {
   if (diceNumber === 1) {
     player.score = 0;
@@ -38,9 +44,14 @@ function updateScore(diceNumber, player) {
 
 //UI Logic 
 
+const displayDiceUI = function(dice) {
+  diceEl.src = `img/die${diceNumber}.png`;
+}
+
 function roll() {
   event.preventDefault();
   const diceNumber = rollDice();
+  // displayDiceUI(diceNumber);
   // determine which player's turn it is
   if (player.turn === 1) {
     updateScore(diceNumber, player);
@@ -80,8 +91,23 @@ function hold() {
    switchPlayer();
    computer.score = 0;
   }
-  
+  displayWinner();
  }
+
+ //Who is the winner
+function displayWinner() {
+ if (player.currentScore >= 10) {
+ document.getElementsByClassName("winner").innerText = "The winner is Player!";
+ console.log("The winner is Player!");
+ } else if (computer.currentScore >= 10){
+ document.querySelector("h3").innerText = "The winner is Computer!";
+ console.log("The winner is Computer!");
+ } else {
+ document.querySelector("h2").innerText = "No Winner!";
+}
+}
+ 
+ 
 
 
 
