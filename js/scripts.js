@@ -95,7 +95,9 @@ function displayWinner() {
 
 //Game Reset 
 //resets the game
-function resetGame() {
+function resetGame() { 
+  player.currentScore = 0;
+  computer.currentScore = 0;
  document.getElementById("player-score").innerText = 0;
  document.getElementById("computer-score").innerText = 0;
  document.getElementById("player-current-score").innerText = 0;
@@ -105,13 +107,12 @@ function resetGame() {
 }
 
 
-
 window.addEventListener("load", function(event) {
   const holdButton = document.getElementById("hold-button");
   holdButton.addEventListener("click", hold);
-  const resetButton = document.getElementById("reset-button");
-  resetButton.addEventListener("click", resetGame);
   const rollButton = document.getElementById("roll-button");
   rollButton.addEventListener("click", roll);
+  const resetButton = document.getElementById("reset-button");
+  resetButton.addEventListener("click", resetGame);
  });
      
