@@ -84,10 +84,10 @@ function hold() {
 
  //Who is the winner
 function displayWinner() {
- if (player.currentScore >= 10) {
+ if (player.currentScore >= 100) {
  document.querySelector("h3").innerText = "The winner is Player!";
  console.log("The winner is Player!");
- } else if (computer.currentScore >= 10) {
+ } else if (computer.currentScore >= 100) {
  document.querySelector("h3").innerText = "The winner is Computer!";
  console.log("The winner is Computer!");
  } 
@@ -96,12 +96,12 @@ function displayWinner() {
 //Game Reset 
 //resets the game
 function resetGame() {
-  document.getElementById("player-score").innerText = 0;
-  document.getElementById("computer-score").innerText = 0;
-  document.getElementById("player-current-score").innerText = 0;
-  document.getElementById("computer-current-score").innerText = 0;
-  document.getElementById("current-turn").innerText = "Player's Turn";
-  document.querySelector("h3").innerText = null;
+ document.getElementById("player-score").innerText = 0;
+ document.getElementById("computer-score").innerText = 0;
+ document.getElementById("player-current-score").innerText = 0;
+ document.getElementById("computer-current-score").innerText = 0;
+ document.getElementById("current-turn").innerText = "Player's Turn";
+ document.querySelector("h3").innerText = null;
 }
 
 
